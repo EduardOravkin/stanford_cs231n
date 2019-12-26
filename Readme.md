@@ -1,1 +1,1 @@
-This repository contains my solutions to the Spring 2019 course cs231n Convolutional Neural Networks for Visual Recognition, which I did from here http://cs231n.github.io .
+This repository contains my solutions to Stanford's cs231n Convolutional Neural Networks for Visual Recognition course (spring 2019) which I did from here http://cs231n.github.io .
