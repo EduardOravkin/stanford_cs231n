@@ -88,7 +88,8 @@ def softmax_loss_vectorized(W, X, y, reg):
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
     #NOTE THAT HERE I FORGOT TO SUBTRACT THE MAXIMUM VALUE (COMPARED TO NONVECTORIZED PART), WHEN I FORGOT TO DO IT IN
-    #ASSIGNEMNT 2 then it actually caused problems
+    #ASSIGNEMNT 2 THEN IT ACTUALLY CAUSED PROBLEMS. HERE IT IS FINE.
+
     F = np.matmul(X,W) #NxC scores matrix
     Konsts = np.log(np.sum(np.exp(F),axis=1)) #N dim vector
 
@@ -100,9 +101,6 @@ def softmax_loss_vectorized(W, X, y, reg):
 
 
     dW = ( ( np.matmul(B.transpose(),A)   -  np.matmul(C,X) ).transpose() )/num_train + 2*reg*W # subtract the y_i components
-
-
-
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 

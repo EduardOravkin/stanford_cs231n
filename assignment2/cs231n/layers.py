@@ -31,15 +31,7 @@ def affine_forward(x, w, b):
 
     cache = (x, w, b)
 
-    #print(x.shape)
-
     x = x.reshape(x.shape[0],np.product(x.shape[1:])) #Nx(D)
-
-    #print(x.shape)
-
-    #print(np.column_stack( (x, np.ones(x.shape[0]) )).shape)
-
-    #print(np.vstack((w,b)).shape)
 
     out = np.matmul( np.column_stack( (x, np.ones(x.shape[0]) ) ), np.vstack((w,b)) ) #NxM
 

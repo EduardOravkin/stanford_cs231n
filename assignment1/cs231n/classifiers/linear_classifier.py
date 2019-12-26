@@ -101,7 +101,7 @@ class LinearClassifier(object):
           class.
         """
         y_pred = np.zeros(X.shape[0])
-        #z = np.zeros((X.shape[0],(self.W).shape[1]))
+
         ###########################################################################
         # TODO:                                                                   #
         # Implement this method. Store the predicted labels in y_pred.            #
@@ -112,7 +112,7 @@ class LinearClassifier(object):
         #y_pred = scores.argmax(axis=1)
 
         z=np.matmul(X,self.W) # NxC
-        #print(z[:10,:])
+
         y_pred=np.argmax(z,axis=1) # dim (N)
 
         #for i in range(len(y_pred)):

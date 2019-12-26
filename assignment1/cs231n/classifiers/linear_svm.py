@@ -25,7 +25,6 @@ def svm_loss_naive(W, X, y, reg):
     D=W.shape[0]
     C=W.shape[1]
     N=X.shape[0]
-    #print(np.linalg.norm(dW))
 
     # compute the loss and the gradient
     num_classes = W.shape[1]
@@ -45,7 +44,7 @@ def svm_loss_naive(W, X, y, reg):
                 dW[:,j] += X[i,:]
 
         dW[:,y[i]] =  dW[:,y[i]] - positive_margins*X[i,:]
-        #print(np.linalg.norm(dW))
+
     # Right now the loss is a sum over all training examples, but we want it
     # to be an average instead so we divide by num_train.
     loss /= num_train
@@ -62,7 +61,6 @@ def svm_loss_naive(W, X, y, reg):
     # code above to compute the gradient.                                       #
     #############################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-    #print(np.linalg.norm(dW))
 
     dW /= num_train
     dW += 2*reg*W
@@ -93,14 +91,13 @@ def svm_loss_vectorized(W, X, y, reg):
     #############################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-    #Wyi_cstack = (np.ones((C,D))*W[:,y[i]]).transpose()
-    #B = (Bb.transpose()>0).astype(int)
-    #A=1.0/float(N)*np.matmul(B,X)
 
     Y = np.matmul(X,W) # NxC
-    #z = Y[np.column_stack((np.arange(N),y))]
+
     z = Y[np.arange(N),y]
+
     P = (np.ones((C,N))*z).transpose()
+
     B = (Y-P+1)*((Y-P+1>0).astype(int)) # NxC
 
     loss =1.0/float(N)*(np.sum(B) - N) + reg * np.sum(W * W)
@@ -119,7 +116,7 @@ def svm_loss_vectorized(W, X, y, reg):
     #############################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-    #### baaaaaad, because it's slower than nonvectorized :(((
+    #### baaaad, because it's slower than nonvectorized :(((
 
     for j in range(C):
         G=X*((np.ones((D,N))*((Y-P+1>0).astype(int)[:,j])).transpose()) # NxD
